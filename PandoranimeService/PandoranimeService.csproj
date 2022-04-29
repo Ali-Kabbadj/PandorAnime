@@ -18,7 +18,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Folder Include="Interfaces\Scrapper\" />
+	  <Compile Remove="Interfaces\**" />
+	  <EmbeddedResource Remove="Interfaces\**" />
+	  <MauiCss Remove="Interfaces\**" />
+	  <MauiXaml Remove="Interfaces\**" />
+	  <None Remove="Interfaces\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="PuppeteerSharp" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Responses\9Anime\" />
 	</ItemGroup>
 
 </Project>
