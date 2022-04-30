@@ -1,0 +1,10 @@
+﻿global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Pandoranime.Models;
+global using Pandoranime.Pages;
+global using Pandoranime.ViewModels;
+global using MvvmHelpers;
+global using MvvmHelpers.Commands;
+global using System.Windows.Input;
+global using System.Collections.ObjectModel;
+global using Pandoranime.Helpers;
+global using Pandoranime.Services;

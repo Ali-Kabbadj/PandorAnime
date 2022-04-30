@@ -11,17 +11,18 @@ namespace PandoranimeService.Services.Scappers
 
         public static async Task<Page> OpenChromiumPage()
         {
+
             var browserFetcher = new BrowserFetcher(new BrowserFetcherOptions
             {
-                Path = "D:\\Chromium"
+                Path = @"C:\\Users\\ALIKA\\OneDrive\\Documents\\PandoranimeFiles"
             });
 
-            var revision = await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
+            await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
             var browser = await Puppeteer.LaunchAsync(new LaunchOptions
             {
                 Headless = true,
                 DefaultViewport = ViewPortOptions.Default,
-                ExecutablePath = revision.ExecutablePath
+                ExecutablePath = @"C:\\Users\\ALIKA\\OneDrive\\Documents\\PandoranimeFiles\\Win64-970485\\chrome-win\\chrome.exe"
             });
 
             return await browser.NewPageAsync();
@@ -60,9 +61,12 @@ namespace PandoranimeService.Services.Scappers
             var Animes = new List<AnimeByPageModel>();
 
             using (var page = await OpenChromiumPage())
-            {
+            {                
+                WaitUntilNavigation[] waitUntil = new[] { WaitUntilNavigation.Networkidle0, WaitUntilNavigation.Networkidle2, WaitUntilNavigation.DOMContentLoaded, WaitUntilNavigation.Load ,WaitUntilNavigation.DOMContentLoaded};
+
                 await page.SetJavaScriptEnabledAsync(false);
-                await page.GoToAsync(NINE_ANIME_LIST_URL);
+                await page.GoToAsync(NINE_ANIME_LIST_URL, new NavigationOptions { WaitUntil = waitUntil });
+
 
                 var imageUrls = await page.EvaluateExpressionAsync<string[]>(ANIME_IMAGE_URL_EXPRETION);
                 var showUrl = await page.EvaluateExpressionAsync<string[]>(ANIME_URL_EXPRETION);

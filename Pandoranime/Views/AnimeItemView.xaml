@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VerticalStackLayout  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      x:Class="Pandoranime.Views.AnimeItemView"
+                      xmlns:viewmodels="clr-namespace:Pandoranime.ViewModels"
+                      x:DataType="viewmodels:AnimeViewModel"
+                      x:Name="self">
+
+    <VerticalStackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding NavigateToDetailCommand}" />
+    </VerticalStackLayout.GestureRecognizers>
+
+    <Grid>
+
+        <Image Aspect="AspectFit"
+               Source="{Binding Image}"
+               MinimumWidthRequest="{x:OnIdiom Phone=180, Default=264}"
+               MinimumHeightRequest="{x:OnIdiom Phone=180, Default=264}"
+               MaximumHeightRequest="{x:OnIdiom Phone=190, Default=264}"
+               MaximumWidthRequest="{x:OnIdiom Phone=190, Default=264}"
+               HorizontalOptions="Start"
+               Margin="0,0,0,12" >
+        </Image>
+
+        <!--<Image Source="suscribed.png"
+               HorizontalOptions="End"
+               VerticalOptions="End"
+               Margin="22"
+               IsVisible="{Binding IsSubscribed}"
+               WidthRequest="24"
+               HeightRequest="24">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SubscriptionCommand, Source={x:Reference self}}" CommandParameter="{Binding }"/>
+            </Image.GestureRecognizers>
+        </Image>-->
+
+    </Grid>
+
+    <Label Text="{Binding Name}"
+           MaxLines="1"
+           HorizontalOptions="Start"
+           LineBreakMode="TailTruncation"
+           MaximumWidthRequest="{x:OnIdiom Phone=190, Default=264}"
+           Style="{OnIdiom Default={StaticResource BodyXLLabelStyle},Phone={StaticResource BodyLLabelStyle}}" />
+
+
+</VerticalStackLayout>
+
