@@ -2,7 +2,7 @@ namespace Pandoranime.Pages;
 
 public partial class DiscoverPage : ContentPage
 {
-	private DiscoverViewModel viewModel => BindingContext as DiscoverViewModel;
+	private DiscoverViewModel ViewModel => BindingContext as DiscoverViewModel;
 
 	public DiscoverPage(DiscoverViewModel vm)
 	{
@@ -13,7 +13,7 @@ public partial class DiscoverPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await viewModel.InitializeAsync();
+        await ViewModel.InitializeAsync();
     }
 
     protected override void OnDisappearing()

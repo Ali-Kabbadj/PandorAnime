@@ -72,7 +72,6 @@ namespace PandoranimeService.Services.Scappers
                 var showUrl = await page.EvaluateExpressionAsync<string[]>(ANIME_URL_EXPRETION);
                 var showNames = await page.EvaluateExpressionAsync<string[]>(ANIME_NAME_EXPRETION);
                 
-                Animes = new List<AnimeByPageModel>();
 
                 for (int i = 0; i < imageUrls.Length; i++)
                 {
