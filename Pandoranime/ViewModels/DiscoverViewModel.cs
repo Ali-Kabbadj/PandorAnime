@@ -89,8 +89,7 @@ namespace Pandoranime.ViewModels
         {
             var list = new ObservableRangeCollection<AnimeGroup>
             {
-                new AnimeGroup(AppResource.Whats_New, listAnimes.Take(6).ToList()),
-                new AnimeGroup(AppResource.Specially_For_You, listAnimes.Take(6..).ToList())
+                new AnimeGroup(AppResource.Browse, listAnimes.ToList()),
             };
 
             AnimeGroup.ReplaceRange(list);
