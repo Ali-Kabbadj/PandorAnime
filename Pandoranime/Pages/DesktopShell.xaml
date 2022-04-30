@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:Pandoranime.Pages"
+       FlyoutBehavior="Locked"
+       xmlns:root="clr-namespace:Pandoranime"
+       xmlns:viewmodels="clr-namespace:Pandoranime.ViewModels"
+       x:DataType="viewmodels:ShellViewModel"
+       x:Class="Pandoranime.Pages.DesktopShell">
+
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="{AppThemeBinding Dark=logo_color_horizontal_darkmode.png,Light=logo_header_horizontal.png}"
+                   SemanticProperties.Description=".NET Podcast application logo"
+                   HeightRequest="142"
+                   VerticalOptions="Center"
+                   WidthRequest="230"
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <ShellContent Title="{Binding Discover.Title}"
+                  Icon="{AppThemeBinding Light=discover.png, Dark=discover_dark.png}"
+                  ContentTemplate="{DataTemplate pages:DiscoverPage}"/>
+</Shell>

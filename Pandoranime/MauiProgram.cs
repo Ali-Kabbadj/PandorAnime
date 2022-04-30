@@ -7,6 +7,10 @@
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureViewModels()
+                .ConfigureServices()
+                .ConfigurePages()
+                .ConfigureViewModels()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

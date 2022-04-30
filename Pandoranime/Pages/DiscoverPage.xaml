@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:Pandoranime.Resources.Strings"
+             Title="{x:Static res:AppResource.Home}"
+             x:Name="this"
+             xmlns:view="clr-namespace:Pandoranime.Views"
+             xmlns:viewmodels="clr-namespace:Pandoranime.ViewModels"
+             xmlns:controls="clr-namespace:Pandoranime.Controls"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodels:DiscoverViewModel"
+             x:Class="Pandoranime.Pages.DiscoverPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="ListTitleStyle"
+               TargetType="Label"
+               BasedOn="{OnIdiom Default={StaticResource H5LabelStyle}, Phone={StaticResource H6LabelStyle}}">
+            <Setter Property="Padding"
+                    Value="{OnIdiom Desktop='48,0,0,12', Phone='16,0,0,0'}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Background="{AppThemeBinding Light={StaticResource Grey1}, Dark={StaticResource Grey9}}">
+
+        <StackLayout Margin="10,0">
+            <controls:HeaderControl TextToSearch="{Binding Text, Mode=OneWayToSource}"
+                                    SearchCommand="{Binding SearchCommand}"
+                                    VerticalOptions="Start" />
+        </StackLayout>
+
+        <CollectionView ItemsSource="{Binding AnimeGroup}"
+                        Margin="10,50,10,0"
+                        SelectionMode="None"
+                        IsGrouped="True">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="{OnIdiom Phone=2, Tablet=3, Desktop=4, Default=4}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <view:AnimeItemView SubscriptionCommand="{Binding SubscribeCommand, Source={RelativeSource AncestorType={x:Type viewmodels:DiscoverViewModel}}}"
+                                            SubscriptionCommandParameter="{Binding }" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                    <Label Text="{Binding Name}"
+                           Style="{StaticResource ListTitleStyle}"
+                           FontSize="32" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+
+        </CollectionView>
+
+
+
+    </Grid>
+</ContentPage>
