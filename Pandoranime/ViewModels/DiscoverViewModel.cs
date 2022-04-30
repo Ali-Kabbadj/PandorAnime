@@ -34,14 +34,14 @@ namespace Pandoranime.ViewModels
             _animesService = animes;
         }
 
-        internal async Task InitializeAsync()
+        internal async Task InitializeAsync(int pageIndex)
         {
-            await FetchAsync();
+            await FetchAsync(pageIndex);
         }
 
-        private async Task FetchAsync()
+        private async Task FetchAsync(int pageIndex)
         {
-            var animes = await _animesService.GetAnimesAsync();
+            var animes = await _animesService.GetAnimesAsync(pageIndex);
 
             if (animes == null)
             {

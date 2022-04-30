@@ -13,7 +13,7 @@ public partial class DiscoverPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await ViewModel.InitializeAsync();
+        await ViewModel.InitializeAsync(1);
     }
 
     protected override void OnDisappearing()

@@ -284,5 +284,17 @@ namespace Pandoranime.Resources.Strings {
                 return ResourceManager.GetString("Whats_New", resourceCulture);
             }
         }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        internal static string Browse
+        {
+            get
+            {
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
     }
 }

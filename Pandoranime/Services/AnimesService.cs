@@ -6,21 +6,20 @@ namespace Pandoranime.Services
     {
         private readonly NineAnimeService _nineAnimeService;
         private bool firstLoad = true;
-        private int pageIndex = 1;
 
         public AnimesService()
         {
             _nineAnimeService = new NineAnimeService();
         }
 
-        public Task<IEnumerable<Anime>> GetAnimesAsync()
+        public Task<IEnumerable<Anime>> GetAnimesAsync(int pageIndex)
         {
-            return SearchAnimesAsync();
+            return SearchAnimesAsync(pageIndex);
         }
 
-        public async Task<IEnumerable<Anime>> SearchAnimesAsync()
+        public async Task<IEnumerable<Anime>> SearchAnimesAsync(int pageIndex)
         {
-            var animesResponse = await TryGetAsync();
+            var animesResponse = await TryGetAsync(pageIndex);
 
             return animesResponse?.Select(response => GetAnime(response));
         }
@@ -30,7 +29,7 @@ namespace Pandoranime.Services
             return new Anime() { ImageUrl = anime.ImageUrl,Name = anime.Name, Url= anime.Url};
         }
 
-        private async Task<List<Anime>> TryGetAsync()
+        private async Task<List<Anime>> TryGetAsync(int pageIndex)
         {
            
             var NineAnimes = await _nineAnimeService.GetAnimesByPage(pageIndex);
