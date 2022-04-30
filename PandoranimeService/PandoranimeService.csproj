@@ -18,12 +18,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
-	  <PackageReference Include="PuppeteerSharp" Version="7.0.0" />
+	  <Compile Remove="Responses\**" />
+	  <EmbeddedResource Remove="Responses\**" />
+	  <MauiCss Remove="Responses\**" />
+	  <MauiXaml Remove="Responses\**" />
+	  <None Remove="Responses\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Responses\9Anime\" />
+	  <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
+	  <PackageReference Include="PuppeteerSharp" Version="7.0.0" />
 	</ItemGroup>
 
 </Project>

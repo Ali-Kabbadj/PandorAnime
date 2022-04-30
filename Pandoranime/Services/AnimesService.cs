@@ -5,7 +5,6 @@ namespace Pandoranime.Services
     public class AnimesService
     {
         private readonly NineAnimeService _nineAnimeService;
-        private bool firstLoad = true;
 
         public AnimesService()
         {
