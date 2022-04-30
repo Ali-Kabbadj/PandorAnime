@@ -8,7 +8,9 @@ namespace PandoranimeService.Services.NineAnime
     {
         public async Task<List<AnimeByPageModel>> GetAnimesByPage(int pageIndex)
         {
-            return await PuppeteerSharpService.NineAnimeGetListByPageId(pageIndex);
+            if (pageIndex <1)
+                pageIndex = 1;
+            return await HtmlAgilityPackService.NineAnimeGetListByPageId(pageIndex);
         }
 
         public async Task<int> GetMaxPage()
