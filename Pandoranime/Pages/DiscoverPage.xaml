@@ -33,7 +33,7 @@
                         SelectionMode="None"
                         IsGrouped="True">
 
-            <CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  Span="{OnIdiom Phone=2, Tablet=3, Desktop=4, Default=4}"
                                  HorizontalItemSpacing="5"
@@ -56,7 +56,7 @@
             </CollectionView.GroupHeaderTemplate>
 
         </CollectionView>
-
+ 
 
 
     </Grid>
