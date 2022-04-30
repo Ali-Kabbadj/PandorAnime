@@ -15,8 +15,8 @@
         <Frame Margin="0" Padding="0" CornerRadius="10">
             <Image Aspect="Fill"
                Source="{Binding Image}"
-               MinimumWidthRequest="{x:OnIdiom Phone=180, Default=90}"
-               MinimumHeightRequest="{x:OnIdiom Phone=180, Default=90}"
+               MinimumWidthRequest="{x:OnIdiom Phone=180, Default=100}"
+               MinimumHeightRequest="{x:OnIdiom Phone=180, Default=100}"
                MaximumHeightRequest="{x:OnIdiom Phone=190, Default=264}"
                MaximumWidthRequest="{x:OnIdiom Phone=190, Default=264}"
                HorizontalOptions="Start"
