@@ -29,15 +29,16 @@
         </StackLayout>
 
         <CollectionView ItemsSource="{Binding AnimeGroup}"
-                        Margin="10,50,10,0"
+                        Margin="10,10,10,0"
                         SelectionMode="None"
                         IsGrouped="True">
 
-                <CollectionView.ItemsLayout>
+            <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                 Span="{OnIdiom Phone=2, Tablet=3, Desktop=4, Default=4}"
+                                 Span="{OnIdiom Phone=2, Tablet=3, Desktop=9, Default=12}"
                                  HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                                 VerticalItemSpacing="5" 
+                                 />
             </CollectionView.ItemsLayout>
 
             <CollectionView.ItemTemplate>
@@ -51,7 +52,8 @@
                 <DataTemplate x:DataType="{x:Null}">
                     <Label Text="{Binding Name}"
                            Style="{StaticResource ListTitleStyle}"
-                           FontSize="32" />
+                           FontSize="32" 
+                           />
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
 

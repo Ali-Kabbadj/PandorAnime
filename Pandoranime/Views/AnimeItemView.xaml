@@ -11,19 +11,19 @@
         <TapGestureRecognizer Command="{Binding NavigateToDetailCommand}" />
     </VerticalStackLayout.GestureRecognizers>
 
-    <Grid>
-
-        <Image Aspect="AspectFit"
+    <Grid >
+        <Frame Margin="0" Padding="0" CornerRadius="10">
+            <Image Aspect="Fill"
                Source="{Binding Image}"
-               MinimumWidthRequest="{x:OnIdiom Phone=180, Default=264}"
-               MinimumHeightRequest="{x:OnIdiom Phone=180, Default=264}"
+               MinimumWidthRequest="{x:OnIdiom Phone=180, Default=100}"
+               MinimumHeightRequest="{x:OnIdiom Phone=180, Default=100}"
                MaximumHeightRequest="{x:OnIdiom Phone=190, Default=264}"
                MaximumWidthRequest="{x:OnIdiom Phone=190, Default=264}"
                HorizontalOptions="Start"
-               Margin="0,0,0,12" >
-        </Image>
+               Margin="0">
+            </Image>
 
-        <!--<Image Source="suscribed.png"
+            <!--<Image Source="suscribed.png"
                HorizontalOptions="End"
                VerticalOptions="End"
                Margin="22"
@@ -34,15 +34,18 @@
                 <TapGestureRecognizer Command="{Binding SubscriptionCommand, Source={x:Reference self}}" CommandParameter="{Binding }"/>
             </Image.GestureRecognizers>
         </Image>-->
+        </Frame>
 
     </Grid>
-
-    <Label Text="{Binding Name}"
+    <Grid>
+       <Label Text="{Binding Name}"
            MaxLines="1"
            HorizontalOptions="Start"
            LineBreakMode="TailTruncation"
            MaximumWidthRequest="{x:OnIdiom Phone=190, Default=264}"
-           Style="{OnIdiom Default={StaticResource BodyXLLabelStyle},Phone={StaticResource BodyLLabelStyle}}" />
+           VerticalTextAlignment="Start"
+           Style="{OnIdiom Default={StaticResource BodyXLLabelStyle},Phone={StaticResource BodyLLabelStyle}}" />  
+    </Grid>
 
 
 </VerticalStackLayout>
