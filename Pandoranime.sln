@@ -5,7 +5,11 @@ VisualStudioVersion = 17.2.32422.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandoranimeService", "PandoranimeService\PandoranimeService.csproj", "{8D4172EE-555B-4092-BE47-70EF1FF9818E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandoranime", "Pandoranime\Pandoranime.csproj", "{2B2606C1-D101-44CF-B5EB-D0BDD345A27B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandoranime", "Pandoranime\Pandoranime.csproj", "{2B2606C1-D101-44CF-B5EB-D0BDD345A27B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandoranime.Core", "Pandoranime.Core\Pandoranime.Core.csproj", "{A902BDB0-AA5C-46F5-8133-D34CFF0831C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandoranime.Core.AniList", "Pandoranime.Core.AniList\Pandoranime.Core.AniList.csproj", "{9DDCC1E6-B372-4359-B27D-390FFBEEABE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{2B2606C1-D101-44CF-B5EB-D0BDD345A27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B2606C1-D101-44CF-B5EB-D0BDD345A27B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B2606C1-D101-44CF-B5EB-D0BDD345A27B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A902BDB0-AA5C-46F5-8133-D34CFF0831C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A902BDB0-AA5C-46F5-8133-D34CFF0831C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A902BDB0-AA5C-46F5-8133-D34CFF0831C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A902BDB0-AA5C-46F5-8133-D34CFF0831C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DDCC1E6-B372-4359-B27D-390FFBEEABE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DDCC1E6-B372-4359-B27D-390FFBEEABE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DDCC1E6-B372-4359-B27D-390FFBEEABE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DDCC1E6-B372-4359-B27D-390FFBEEABE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
