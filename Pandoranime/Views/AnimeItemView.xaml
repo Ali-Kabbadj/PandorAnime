@@ -3,18 +3,18 @@
 <VerticalStackLayout  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       x:Class="Pandoranime.Views.AnimeItemView"
-                      xmlns:viewmodels="clr-namespace:Pandoranime.ViewModels"
-                      x:DataType="viewmodels:AnimeViewModel"
+                      xmlns:viewmodels="clr-namespace:Pandoranime.Models"
+                      x:DataType="viewmodels:MediaItemModel"
                       x:Name="self">
 
-    <VerticalStackLayout.GestureRecognizers>
+    <!--<VerticalStackLayout.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding NavigateToDetailCommand}" />
-    </VerticalStackLayout.GestureRecognizers>
+    </VerticalStackLayout.GestureRecognizers>-->
 
     <Grid >
         <Frame Margin="0" Padding="0" CornerRadius="10">
             <Image Aspect="Fill"
-               Source="{Binding Image}"
+               Source="{Binding ImageUrl}"
                MinimumWidthRequest="{x:OnIdiom Phone=180, Default=100}"
                MinimumHeightRequest="{x:OnIdiom Phone=180, Default=100}"
                MaximumHeightRequest="{x:OnIdiom Phone=190, Default=264}"
@@ -38,7 +38,7 @@
 
     </Grid>
     <Grid>
-       <Label Text="{Binding Name}"
+       <Label Text="{Binding Title}"
            MaxLines="1"
            HorizontalOptions="Start"
            LineBreakMode="TailTruncation"

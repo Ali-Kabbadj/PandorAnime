@@ -1,9 +1,12 @@
-﻿using Application = Microsoft.Maui.Controls.Application;
+﻿using Pandoranime.Core.AniList;
+using Application = Microsoft.Maui.Controls.Application;
 
 namespace Pandoranime
 {
     public partial class App : Application
     {
+        public static AniClient Client { get; } = new();
+
         public App()
         {
             InitializeComponent();
