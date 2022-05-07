@@ -28,7 +28,7 @@
                                     VerticalOptions="Start" />
         </StackLayout>
 
-        <CollectionView ItemsSource="{Binding AnimeGroup}"
+        <CollectionView ItemsSource="{Binding Group}"
                         Margin="10,10,10,0"
                         SelectionMode="None"
                         IsGrouped="True">

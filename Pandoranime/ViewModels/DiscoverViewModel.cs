@@ -1,4 +1,5 @@
-﻿using Pandoranime.Resources.Strings;
+﻿using Pandoranime.Core.AniList;
+using Pandoranime.Resources.Strings;
 
 namespace Pandoranime.ViewModels
 {
@@ -11,7 +12,7 @@ namespace Pandoranime.ViewModels
         //private CategoriesViewModel categoriesVM;
         private string text;
 
-
+        public ObservableRangeCollection<PaginationGroup> Group { get; private set; } = new ObservableRangeCollection<PaginationGroup>();
         public ObservableRangeCollection<AnimeGroup> AnimeGroup { get; private set; } = new ObservableRangeCollection<AnimeGroup>();
         public ICommand SearchCommand { get; }
 
@@ -41,20 +42,59 @@ namespace Pandoranime.ViewModels
 
         private async Task FetchAsync(int pageIndex)
         {
-            var animes = await _animesService.GetAnimesAsync(pageIndex);
+            //var animes = await _animesService.GetAnimesAsync(pageIndex);
 
-            if (animes == null)
+            //if (animes == null)
+            //{
+            //    await Shell.Current.DisplayAlert(
+            //        AppResource.Error_Title,
+            //        AppResource.Error_Message,
+            //        AppResource.Close);
+
+            //    return;
+            //}
+
+            //_animes = ConvertToViewModels(animes);
+            //UpdateAnimes(_animes);
+            var date = DateTime.Today;
+            var day = date.DayOfYear - Convert.ToInt32(DateTime.IsLeapYear(date.Year) && date.DayOfYear > 59);
+            var CurrentSeason = day switch
             {
-                await Shell.Current.DisplayAlert(
-                    AppResource.Error_Title,
-                    AppResource.Error_Message,
-                    AppResource.Close);
+                < 80 or >= 355 => MediaSeason.Winter,
+                >= 80 and < 172 => MediaSeason.Spring,
+                >= 172 and < 266 => MediaSeason.Summer,
+                _ => MediaSeason.Fall
+            };
 
-                return;
-            }
+            var popularMedia = await App.Client.SearchMedia(new AniFilter { Sort = MediaSort.Popularity }, new AniPaginationOptions(1, 10));
+            var trendingMedia = await App.Client.SearchMedia(new AniFilter { Sort = MediaSort.Trending });
+            var favoriteMedia = await App.Client.SearchMedia(new AniFilter { Sort = MediaSort.Favorites });
+            var seasonalMedia = await App.Client.GetMediaBySeason(CurrentSeason);
 
-            _animes = ConvertToViewModels(animes);
-            UpdateAnimes(_animes);
+            var popularMediaItems = new List<MediaItemModel>();
+            var trendingMediaItems = new List<MediaItemModel>();
+            var favoriteMediaItems = new List<MediaItemModel>();
+            var seasonalMediaItems = new List<MediaItemModel>();
+
+            foreach (var media in popularMedia.Data)
+                popularMediaItems.Add(new MediaItemModel(media));
+            foreach (var media in trendingMedia.Data)
+                trendingMediaItems.Add(new MediaItemModel(media));
+            foreach (var media in favoriteMedia.Data)
+                favoriteMediaItems.Add(new MediaItemModel(media));
+            foreach (var media in seasonalMedia.Data)
+                seasonalMediaItems.Add(new MediaItemModel(media));
+
+            var list = new ObservableRangeCollection<PaginationGroup>
+            {
+                new PaginationGroup(AppResource.Browse, popularMediaItems),
+                new PaginationGroup(AppResource.Browse, trendingMediaItems),
+                new PaginationGroup(AppResource.Browse, trendingMediaItems),
+                new PaginationGroup(AppResource.Browse, trendingMediaItems)
+            };
+
+            Group.ReplaceRange(list);
+
         }
 
         private static List<AnimeViewModel> ConvertToViewModels(IEnumerable<Anime> animes)
